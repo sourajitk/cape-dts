@@ -1,9 +1,3 @@
-# +++ ASUS_BSP : add for asus dtbo
-$(warning [Build] build dtbo CONFIG_BUILD_ARM64_DT_OVERLAY = $(CONFIG_BUILD_ARM64_DT_OVERLAY))
-$(warning [Build] build dtbo ASUS_BUILD_PROJECT = $(ASUS_BUILD_PROJECT))
-$(warning [Build] build dtbo CONFIG_ARCH_QTI_VM = $(CONFIG_ARCH_QTI_VM))
-# --- ASUS_BSP : add for asus dtbo
-
 ifneq ($(CONFIG_ARCH_QTI_VM), y)
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
 dtbo-$(CONFIG_ARCH_LAHAINA) += lahaina-rumi-overlay.dtbo \
@@ -82,46 +76,6 @@ dtb-$(CONFIG_ARCH_LAHAINA) += lahaina-rumi.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
-# +++ ASUS_BSP : add for asus dtbo
-ifneq (,$(filter AI2201,$(ASUS_BUILD_PROJECT)))
-$(warning build dtbo for AI2201 8450 ...)
-
-dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-mtp-pm8010-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-EVB-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-PreSR-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-SR1-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-SR2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-ER1-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-ER2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-PR-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2201-8450-MP-overlay.dtbo
-
-waipio-mtp-pm8010-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-EVB-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-PreSR-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-SR1-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-SR2-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-ER1-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-ER2-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-PR-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2201-8450-MP-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-else
-ifneq (,$(filter AI2202,$(ASUS_BUILD_PROJECT)))
-$(warning build dtbo for AI2202...)
-
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2202-EVB-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2202-SR-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2202-SR2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2202-ER-overlay.dtbo
-dtbo-$(CONFIG_ARCH_WAIPIO) += AI2202-ER2-2-overlay.dtbo
-
-AI2202-EVB-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2202-SR-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2202-SR2-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2202-ER-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-AI2202-ER2-2-overlay.dtbo-base := waipio.dtb waipiop.dtb waipio-v2.dtb waipiop-v2.dtb waipio-lte.dtb
-else
-# --- ASUS_BSP : add for asus dtbo
 dtbo-$(CONFIG_ARCH_WAIPIO) += waipio-rumi-overlay.dtbo \
 	waipio-mtp-pm8008-overlay.dtbo \
 	waipio-cdp-pm8008-overlay.dtbo \
@@ -292,43 +246,14 @@ dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
-ifneq (,$(filter AI2201,$(ASUS_BUILD_PROJECT)))
-$(warning build dtbo for AI2201 8475 ...)
+ifneq (,$(filter AI2202,$(ASUS_BUILD_PROJECT)))
+$(warning Building dtbo for AI2202 8475 ...)
 
 dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8010-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2201-8475-EVB_ER1-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2201-8475-ER2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2201-8475-PR-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2201-8475-PR2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2201-8475-PR2_2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2201-8475-MP-overlay.dtbo
+dtbo-$(CONFIG_ARCH_CAPE) += AI2202-8475-PR-overlay.dtbo
 
 cape-mtp-pm8010-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2201-8475-EVB_ER1-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2201-8475-ER2-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2201-8475-PR-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2201-8475-PR2-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2201-8475-PR2_2-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2201-8475-MP-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-
-else ifneq (,$(filter AI2202,$(ASUS_BUILD_PROJECT)))
-$(warning build dtbo for AI2202 8475 ...)
-
-dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8010-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2202-8475-EVB-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2202-8475-ER2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2202-8475-ER2-2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2202-8475-PR1-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2202-8475-PR2-overlay.dtbo
-dtbo-$(CONFIG_ARCH_CAPE) += AI2202-8475-PR3-overlay.dtbo
-
-cape-mtp-pm8010-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2202-8475-EVB-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2202-8475-ER2-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2202-8475-ER2-2-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2202-8475-PR1-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2202-8475-PR2-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
-AI2202-8475-PR3-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
+AI2202-8475-PR-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
 
 else
 dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
