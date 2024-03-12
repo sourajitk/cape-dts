@@ -26,15 +26,6 @@
 
 	ddr-regions { };
 
-	mem-offline {
-		compatible = "qcom,mem-offline";
-		offline-sizes = <0x1 0x40000000 0x0 0x40000000>,
-				<0x1 0xc0000000 0x0 0x80000000>,
-				<0x2 0xc0000000 0x1 0x40000000>;
-		granule = <512>;
-		mboxes = <&qmp_aop 0>;
-	};
-
 	reserved_memory: reserved-memory { };
 
 	aliases: aliases {
@@ -603,7 +594,7 @@
 		interrupt-controller;
 		#interrupt-cells = <2>;
 		wakeup-parent = <&pdc>;
-		qcom,gpios-reserved = <28 29 30 31 36 37 38 39>;
+		qcom,gpios-reserved = <36 37 38 39>;
 	};
 
 	arch_timer: timer {
@@ -940,7 +931,6 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU4 &CPU5 &CPU6>;
 				qcom,cpufreq-memfreq-tbl =
-					<  300000  307200 >,
 					<  633600  518400 >,
 					<  883200  614400 >,
 					< 1113600  902400 >,
@@ -956,7 +946,6 @@
 				compatible = "qcom,memlat-mon";
 				qcom,cpulist = <&CPU7>;
 				qcom,cpufreq-memfreq-tbl =
-					<  300000  307200 >,
 					<  787200  518400 >,
 					<  921600  614400 >,
 					< 1171200  902400 >,
@@ -1031,13 +1020,13 @@
 		qcom,master;
 		gunyah-label = <3>;
 		peer-name = <2>;
-		shared-buffer = <&trust_ui_vm_qrtr>;
+		//shared-buffer = <&trust_ui_vm_qrtr>;
 	};
 
 	trust_ui_vm: qcom,trust_ui_vm@e55fc000 {
 		reg = <0xe55fc000 0x104000>;
 		vm_name = "trustedvm";
-		shared-buffers = <&trust_ui_vm_vblk0_ring &trust_ui_vm_swiotlb>;
+		//shared-buffers = <&trust_ui_vm_vblk0_ring &trust_ui_vm_swiotlb>;
 	};
 
 	qcom,virtio_backend@0 {
@@ -1794,7 +1783,7 @@
 
 	qcom,rmtfs_sharedmem@0 {
 		compatible = "qcom,sharedmem-uio";
-		reg = <0x0 0x280000>;
+		reg = <0x0 0x500000>;
 		reg-names = "rmtfs";
 		qcom,client-id = <0x00000001>;
 	};
@@ -2729,7 +2718,7 @@
 		qcom,pas-id = <28>;
 		qcom,vmid = <45>;
 		qcom,firmware-name = "trustedvm";
-		memory-region = <&trust_ui_vm_mem>;
+		//memory-region = <&trust_ui_vm_mem>;
 	};
 
 	qcom,gh_vm_loader_sec@e0600000 {
@@ -2738,7 +2727,7 @@
 		qcom,vmid = <50>;
 		qcom,firmware-name = "cpusys_vm";
 		qcom,no-shutdown;
-		memory-region = <&cpusys_vm_mem>;
+		//memory-region = <&cpusys_vm_mem>;
 	};
 
 	tlmm-vm-mem-access {
@@ -2755,7 +2744,7 @@
 		qcom,firmware-name = "trustedvm";
 		qcom,reserved-cpus = <0x5>, <0x6>;
 		qcom,unisolate-timeout-ms = <12000>;
-		memory-region = <&trust_ui_vm_mem>;
+		//memory-region = <&trust_ui_vm_mem>;
 	};
 
 	qcom,guestvm_loader@e0600000 {
@@ -2763,7 +2752,7 @@
 		qcom,pas-id = <35>;
 		qcom,vmid = <50>;
 		qcom,firmware-name = "cpusys_vm";
-		memory-region = <&cpusys_vm_mem>;
+		//memory-region = <&cpusys_vm_mem>;
 	};
 
 	cache-controller@19200000 {
@@ -3137,7 +3126,6 @@
 #include "cape-pinctrl.dtsi"
 #include "waipio-qupv3.dtsi"
 #include "cape-regulators.dtsi"
-#include "cape-coresight.dtsi"
 #include "cape-debug.dtsi"
 #include "msm-arm-smmu-waipio.dtsi"
 #include "cape-dma-heaps.dtsi"
