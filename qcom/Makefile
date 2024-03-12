@@ -290,6 +290,14 @@ dtb-$(CONFIG_ARCH_DIWALI) += diwali-rumi.dtb \
 endif
 
 ifeq ($(CONFIG_BUILD_ARM64_DT_OVERLAY),y)
+ifneq (,$(filter AI2202,$(ASUS_BUILD_PROJECT)))
+$(warning Building dtbo for AI2202 8475 ...)
+dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8010-overlay.dtbo \ 
+                            asus-davinci-overlay.dtbo
+
+cape-mtp-pm8010-overlay.dtbo-base := cape.dtb cape-v2.dtb capep.dtb
+asus-davinci-overlay.dtbo-base    := cape.dtb cape-v2.dtb capep.dtb
+else
 dtbo-$(CONFIG_ARCH_CAPE) += cape-mtp-pm8008-overlay.dtbo \
         cape-mtp-120fps-pm8008-overlay.dtbo \
 	cape-mtp-nodisplay-pm8008-overlay.dtbo \
