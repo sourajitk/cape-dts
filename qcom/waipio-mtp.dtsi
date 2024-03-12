@@ -63,7 +63,7 @@
 			gpios = <&pm8350_gpios 6 GPIO_ACTIVE_LOW>;
 			linux,input-type = <1>;
 			linux,code = <KEY_VOLUMEUP>;
-			gpio-key,wakeup;
+			//gpio-key,wakeup;
 			debounce-interval = <15>;
 			linux,can-disable;
 		};
