@@ -2628,7 +2628,7 @@
 			config {
 				pins = "gpio21";
 				drive-strength = <2>;
-				bias-pull-down;
+				bias-disable;
 			};
 		};
 	};
